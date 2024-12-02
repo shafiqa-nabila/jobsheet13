@@ -46,19 +46,14 @@ public class StudiKasus {
          }
          
     }
-    private static void tampilkanSemuaPrestasi() {
+    public static void tampilkanSemuaPrestasi() {
         if (jumlahPrestasi == 0) {
             System.out.println("Belum ada data prestasi.");
             return;
         }
-
         System.out.println("\n=== DAFTAR SEMUA PRESTASI ===");
         for (int i = 0; i < jumlahPrestasi; i++) {
-            System.out.println("Nama: " + daftarPrestasi[i][0] +
-                               " | NIM: " + daftarPrestasi[i][1] +
-                               " | Jenis: " + daftarPrestasi[i][2] +
-                               " | Tingkat: " + daftarPrestasi[i][3] +
-                               " | Tahun: " + daftarPrestasi[i][4]);
+            System.out.print("Nama: " + daftarPrestasi[i][0] + " | NIM: " + daftarPrestasi[i][1] + " | Jenis: " + daftarPrestasi[i][2] + " | Tingkat: " + daftarPrestasi[i][3] + " | Tahun: " + daftarPrestasi[i][4]);
         }
     }
     public static void main(String[] args) {
