@@ -16,14 +16,19 @@ public class StudiKasus {
          String nama = sc.nextLine();
          System.out.println("Masukkan NIM Mahasiswa: ");
          String nim = sc.nextLine();
-         System.out.println("Masukkan Jenis Prestasi: ");
+         System.out.println("Masukkan Jenis Prestasi(Juara 1,Juara 2,Juara Harapan, dll): ");
          String juara = sc.nextLine();
         System.out.println("Masukkan Tingkat Prestasi(Lokal/Nasional/Internasional): ");
         String tingkat = sc.nextLine();
-        int tahun;
+        while (!(tingkat.equalsIgnoreCase("Lokal") && tingkat.equalsIgnoreCase("Nasional") && tingkat.equalsIgnoreCase("Internasional"))) {
+            System.out.println("Tingkatan tidak valid. Mohon diisi Ulang!");
+            System.out.println("Masukkan Tingkat Prestasi(Lokal/Nasional/Internasional): ");
+            tingkat = sc.nextLine();
+            break;
+        }
          while(true) {
-            System.out.println("Masukkan tahun prestasi: ");
-            tahun = sc.nextInt();
+            System.out.println("Masukkan tahun prestasi( 2010 - 2024 ): ");
+           int tahun = sc.nextInt();
             if (tahun >= 2010 && tahun <= 2024) {
                 daftarPrestasi[jumlahPrestasi][0] = nama;
                 daftarPrestasi[jumlahPrestasi][1] = nim;
@@ -35,12 +40,27 @@ public class StudiKasus {
                 break;
             }else {
                 System.out.println("Tahun tidak valid. Coba lagi!");
+                continue;
             }
 
          }
          
     }
-    
+    private static void tampilkanSemuaPrestasi() {
+        if (jumlahPrestasi == 0) {
+            System.out.println("Belum ada data prestasi.");
+            return;
+        }
+
+        System.out.println("\n=== DAFTAR SEMUA PRESTASI ===");
+        for (int i = 0; i < jumlahPrestasi; i++) {
+            System.out.println("Nama: " + daftarPrestasi[i][0] +
+                               " | NIM: " + daftarPrestasi[i][1] +
+                               " | Jenis: " + daftarPrestasi[i][2] +
+                               " | Tingkat: " + daftarPrestasi[i][3] +
+                               " | Tahun: " + daftarPrestasi[i][4]);
+        }
+    }
     public static void main(String[] args) {
         int pilihan;
         do {
@@ -58,7 +78,7 @@ public class StudiKasus {
                     TambahDataPrestasi();
                     break;
                 case 2:
-                  
+                    tampilkanSemuaPrestasi();
                     break;
                 case 3:
                     
